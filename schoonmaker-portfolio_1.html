@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timothy Schoonmaker — Combat Sports Multimedia Producer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --surface: #131313;
+  --card: #191919;
+  --border: #222;
+  --accent: #C41E2C;
+  --accent2: #E02030;
+  --gold: #C49A28;
+  --text: #EEEAE2;
+  --muted: #6A6A6A;
+  --dim: #333;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(12,12,12,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--text);text-decoration:none}
+.nav-logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 2rem 80px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,#1e1e1e 1px,transparent 1px);background-size:26px 26px;pointer-events:none;opacity:0.6}
+#hero::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent)}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+.eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3.5rem,10vw,9rem);line-height:0.88;text-transform:uppercase;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.hero-name .ghost{opacity:0.18}
+.hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.hero-title em{color:var(--accent);font-style:normal}
+.hero-bio{font-family:'Lora',serif;font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:580px;margin-bottom:2.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.5rem}
+.tag{padding:0.3rem 0.8rem;border:1px solid var(--dim);font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+
+/* SECTION SHELL */
+section{padding:80px 2rem}
+.inner{max-width:1200px;margin:0 auto}
+.sec-head{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:3rem}
+.sec-label{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;letter-spacing:0.02em;line-height:1}
+.sec-rule{height:1px;background:var(--border);flex:1}
+
+/* FEATURED INTERVIEWS */
+#featured{background:var(--surface)}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--border)}
+.feat-card{background:var(--card);cursor:pointer;overflow:hidden}
+.feat-card:first-child{grid-column:1/-1}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.vthumb img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.35s,transform 0.4s}
+.feat-card:hover .vthumb img{opacity:1;transform:scale(1.03)}
+.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(196,30,44,0.88);display:flex;align-items:center;justify-content:center;transition:transform 0.2s,background 0.2s}
+.feat-card:hover .play{background:var(--accent2);transform:translate(-50%,-50%) scale(1.1)}
+.play svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.card-info{padding:1.1rem 1.4rem;border-top:1px solid var(--border)}
+.badge{display:inline-block;background:var(--accent);color:#fff;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.18rem 0.55rem;margin-bottom:0.4rem}
+.badge.gold{background:var(--gold)}
+.fighter{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.2rem}
+.ctx{font-size:0.72rem;color:var(--muted);letter-spacing:0.04em}
+
+/* ARCHIVE */
+#archive{background:var(--bg)}
+.arch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.arch-card{background:var(--bg);display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1.1rem;cursor:pointer;text-decoration:none;color:inherit;transition:background 0.2s}
+.arch-card:hover{background:var(--surface)}
+.arch-thumb{width:78px;height:52px;flex-shrink:0;position:relative;overflow:hidden;background:#000}
+.arch-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.65;transition:opacity 0.2s}
+.arch-card:hover .arch-thumb img{opacity:1}
+.mini-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.mini-play svg{width:16px;height:16px;fill:rgba(255,255,255,0.85)}
+.arch-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.97rem;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.arch-detail{font-size:0.67rem;color:var(--muted);letter-spacing:0.04em;margin-top:0.15rem}
+
+/* PRESS */
+#press{background:var(--surface)}
+.press-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.press-vid{aspect-ratio:16/9;position:relative;background:#000}
+.press-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.press-label{font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.press-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:2.2rem;text-transform:uppercase;line-height:1;margin-bottom:1.5rem}
+.press-body{font-family:'Lora',serif;font-size:0.97rem;line-height:1.8;color:var(--muted)}
+.press-body p+p{margin-top:1rem}
+
+/* SCRIPTS */
+#scripts{background:var(--bg)}
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:2rem;gap:0}
+.tab{padding:0.8rem 1.5rem;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;transition:color 0.2s,border-color 0.2s}
+.tab.active{color:var(--text);border-bottom-color:var(--accent)}
+.panel{display:none}
+.panel.active{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.script-scroll{background:var(--surface);border:1px solid var(--border);height:520px;overflow-y:auto;padding:1.75rem;scrollbar-width:thin;scrollbar-color:var(--dim) transparent}
+.script-scroll::-webkit-scrollbar{width:3px}
+.script-scroll::-webkit-scrollbar-thumb{background:var(--dim)}
+.sh{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);margin-top:1.75rem;margin-bottom:0.45rem}
+.sh:first-child{margin-top:0}
+.sp{font-family:'Lora',serif;font-size:0.88rem;line-height:1.78;color:var(--muted)}
+.sp p+p{margin-top:0.75rem}
+.vid-sticky{position:sticky;top:76px}
+.vid-wrap{aspect-ratio:16/9;position:relative;background:#000}
+.vid-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vid-caption{font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.65rem}
+
+/* CLOCKED */
+#clocked{background:var(--surface)}
+.clocked-intro{font-family:'Lora',serif;font-size:1rem;line-height:1.8;color:var(--muted);max-width:620px;margin-bottom:3rem}
+.sub-label{font-family:'Barlow',sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem}
+.sub-label::after{content:'';height:1px;flex:1;background:var(--border)}
+.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);margin-bottom:3.5rem}
+.yt-card{background:var(--surface);cursor:pointer;overflow:hidden}
+.yt-card:nth-child(4){grid-column:1;grid-row:2}
+.yt-card:nth-child(5){grid-column:2;grid-row:2}
+.yt-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;opacity:0.75;transition:opacity 0.2s,transform 0.4s}
+.yt-card:hover .yt-thumb img{opacity:1;transform:scale(1.03)}
+.yt-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(196,30,44,0.85);display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+.yt-card:hover .yt-play{background:var(--accent2)}
+.yt-play svg{width:15px;height:15px;fill:#fff;margin-left:2px}
+.yt-card.loaded .yt-play,.yt-card.loaded img{display:none}
+
+/* INSTAGRAM */
+.ig-wrap{position:relative}
+.ig-carousel{display:flex;overflow-x:auto;gap:1rem;padding-bottom:1rem;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--dim) transparent}
+.ig-carousel::-webkit-scrollbar{height:3px}
+.ig-carousel::-webkit-scrollbar-thumb{background:var(--dim)}
+.ig-item{flex:0 0 340px;scroll-snap-align:start;min-width:0}
+.ig-item.jewel{flex:0 0 360px}
+.crown-label{font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.ig-scroll-btns{display:flex;gap:0.5rem;margin-bottom:1rem;justify-content:flex-end}
+.ig-btn{width:36px;height:36px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;border-radius:0}
+.ig-btn:hover{background:var(--surface);color:var(--text)}
+
+/* STATS */
+#stats{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stats-grid:last-child{border-bottom:none}
+.stat{padding:2rem 1.5rem;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.2rem;line-height:1;margin-bottom:0.4rem}
+.stat-num em{color:var(--accent);font-style:normal}
+.stat-lbl{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+
+/* CONTACT */
+#contact{background:var(--surface);text-align:center;padding:100px 2rem}
+.contact-eyebrow{font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.contact-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3rem,7vw,6rem);text-transform:uppercase;line-height:0.95;margin-bottom:1.75rem}
+.contact-sub{font-family:'Lora',serif;font-size:1rem;color:var(--muted);max-width:460px;margin:0 auto 2.5rem;line-height:1.75}
+.contact-email{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:0.06em;color:var(--text);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:0.15rem;margin-bottom:1rem;transition:color 0.2s}
+.contact-email:hover{color:var(--accent)}
+.contact-phone{display:block;font-size:0.85rem;color:var(--muted);letter-spacing:0.05em;margin-bottom:3rem}
+.footer{font-size:0.65rem;letter-spacing:0.1em;color:var(--dim);margin-top:4rem}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .feat-grid{grid-template-columns:1fr}
+  .feat-card:first-child{grid-column:1}
+  .arch-grid{grid-template-columns:1fr 1fr}
+  .press-grid{grid-template-columns:1fr;gap:2rem}
+  .panel.active{grid-template-columns:1fr}
+  .vid-sticky{position:static}
+  .yt-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-right:none;border-bottom:1px solid var(--border)}
+}
+@media(max-width:600px){
+  .arch-grid{grid-template-columns:1fr}
+  .yt-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">TJ<em>S</em></a>
+  <ul class="nav-links">
+    <li><a href="#featured">Interviews</a></li>
+    <li><a href="#press">Press</a></li>
+    <li><a href="#scripts">Scripts</a></li>
+    <li><a href="#clocked">Clocked N' Loaded</a></li>
+    <li><a href="#stats">Numbers</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Combat Sports Multimedia Producer</p>
+    <h1 class="hero-name">
+      Timothy<br>
+      <span class="ghost">James</span><br>
+      Schoonmaker
+    </h1>
+    <p class="hero-title">Digital Video &nbsp;·&nbsp; Fighter Interviews &nbsp;·&nbsp; <em>Live UFC Coverage</em> &nbsp;·&nbsp; Bilingual EN / PT</p>
+    <p class="hero-bio">Five-plus years producing premium combat sports content across YouTube, Instagram, and TikTok. Veteran of live UFC event coverage in Brazil — credentialed at press conferences, cage-side with fighters, and fluent in Portuguese. Full Adobe Creative Suite. Proven audience growth from zero to tens of thousands of engaged fans.</p>
+    <div class="tags">
+      <span class="tag">Adobe Premiere Pro</span>
+      <span class="tag">After Effects</span>
+      <span class="tag">Live UFC Coverage</span>
+      <span class="tag">Fighter Interviews</span>
+      <span class="tag">Brazilian Portuguese</span>
+      <span class="tag">YouTube Growth</span>
+      <span class="tag">Short-Form Video</span>
+      <span class="tag">MMA · Boxing · BJJ</span>
+      <span class="tag">SEO &amp; Analytics</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED INTERVIEWS -->
+<section id="featured">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">01 — Fighter Interviews</span>
+      <h2 class="sec-title">Featured</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="feat-grid reveal">
+
+      <!-- Cruz & Bisping — full width -->
+      <div class="feat-card" data-id="6pNDh-ApCfs" onclick="loadFeatured(this)">
+        <div class="vthumb">
+          <img src="https://img.youtube.com/vi/6pNDh-ApCfs/maxresdefault.jpg" alt="Dominick Cruz and Michael Bisping Interview" loading="lazy">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="card-info">
+          <div class="badge">Double Feature</div>
+          <div class="fighter">Dominick Cruz &amp; Michael Bisping</div>
+          <div class="ctx">Two Former UFC Champions · InsideFighting.com</div>
+        </div>
+      </div>
+
+      <!-- Oliveira Portuguese -->
+      <div class="feat-card" data-id="zYxzBx80HlM" onclick="loadFeatured(this)">
+        <div class="vthumb">
+          <img src="https://img.youtube.com/vi/zYxzBx80HlM/maxresdefault.jpg" alt="Charles Oliveira interview in Portuguese" loading="lazy">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="card-info">
+          <div class="badge">Em Português</div>
+          <div class="fighter">Charles "Do Bronx" Oliveira</div>
+          <div class="ctx">UFC Lightweight Champion · Conducted in Brazilian Portuguese</div>
+        </div>
+      </div>
+
+      <!-- Jailton Almeida -->
+      <div class="feat-card" data-id="brplejrGno8" data-start="5" onclick="loadFeatured(this)">
+        <div class="vthumb">
+          <img src="https://img.youtube.com/vi/brplejrGno8/maxresdefault.jpg" alt="Jailton Almeida interview" loading="lazy">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="card-info">
+          <div class="badge">Live · Main Event · Bilingual</div>
+          <div class="fighter">Jailton "Malhadinho" Almeida</div>
+          <div class="ctx">UFC São Paulo · Fighter Hotel Interview · English &amp; Portuguese</div>
+        </div>
+      </div>
+
+      <!-- Glover Teixeira -->
+      <div class="feat-card" data-id="9dlFnqwJ_q8" onclick="loadFeatured(this)">
+        <div class="vthumb">
+          <img src="https://img.youtube.com/vi/9dlFnqwJ_q8/maxresdefault.jpg" alt="Glover Teixeira pre-title fight interview" loading="lazy">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="card-info">
+          <div class="badge">Live · Pre-Title Fight</div>
+          <div class="fighter">Glover Teixeira</div>
+          <div class="ctx">UFC 283 Rio de Janeiro · Night of Title Defense vs. Jamahal Hill</div>
+        </div>
+      </div>
+
+      <!-- Moicano -->
+      <div class="feat-card" data-id="k2VzD75oOh0" onclick="loadFeatured(this)">
+        <div class="vthumb">
+          <img src="https://img.youtube.com/vi/k2VzD75oOh0/maxresdefault.jpg" alt="Renato Moicano interview live in Rio" loading="lazy">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div class="card-info">
+          <div class="badge">Live · Rio de Janeiro</div>
+          <div class="fighter">Renato Moicano</div>
+          <div class="ctx">UFC 283 · Live in Rio de Janeiro, Brazil</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section id="archive">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">02 — Full Archive</span>
+      <h2 class="sec-title">All Interviews</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="arch-grid reveal">
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=uIASLaFmcPo" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/uIASLaFmcPo/mqdefault.jpg" alt="Miles Johns" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Miles Johns</div>
+          <div class="arch-detail">UFC Bantamweight · Podcast Format</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=Mn3Rm93DDyk&t=3s" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/Mn3Rm93DDyk/mqdefault.jpg" alt="Bryan Battle" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Bryan Battle</div>
+          <div class="arch-detail">UFC Welterweight · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=iBm2pk2-eV0&t=623s" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/iBm2pk2-eV0/mqdefault.jpg" alt="Nikolas Motta" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Nikolas Motta</div>
+          <div class="arch-detail">UFC Lightweight · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=pq5J2vCYv_U" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/pq5J2vCYv_U/mqdefault.jpg" alt="Jamal Pogues" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Jamal Pogues</div>
+          <div class="arch-detail">UFC Fighter · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=GJtlPWDSr20&t=1s" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/GJtlPWDSr20/mqdefault.jpg" alt="Gilbert Burns" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Gilbert Burns</div>
+          <div class="arch-detail">UFC São Paulo · Almeida vs Lewis Card · Live</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=qAT4NfqU594" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/qAT4NfqU594/mqdefault.jpg" alt="Randy Brown" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Randy Brown</div>
+          <div class="arch-detail">UFC Welterweight · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=Um-fUK44HVQ&t=36s" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/Um-fUK44HVQ/mqdefault.jpg" alt="Randy Brown II" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Randy Brown II</div>
+          <div class="arch-detail">UFC Welterweight · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=K6wYZDD77F0&t=4s" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/K6wYZDD77F0/mqdefault.jpg" alt="Isaac Dulgarian" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Isaac Dulgarian</div>
+          <div class="arch-detail">UFC Fighter · InsideFighting.com</div>
+        </div>
+      </a>
+
+      <a class="arch-card" href="https://www.youtube.com/watch?v=ECEHZ_PSalE" target="_blank" rel="noopener">
+        <div class="arch-thumb">
+          <img src="https://img.youtube.com/vi/ECEHZ_PSalE/mqdefault.jpg" alt="Garret Armfield" loading="lazy">
+          <div class="mini-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <div>
+          <div class="arch-name">Garret Armfield</div>
+          <div class="arch-detail">UFC Fighter · InsideFighting.com</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRESS CONFERENCE -->
+<section id="press">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">03 — Live Event Access</span>
+      <h2 class="sec-title">On the Ground</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="press-grid reveal">
+      <div class="press-vid">
+        <iframe src="https://www.youtube.com/embed/dXZyXTlINLI?start=887" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+      <div>
+        <p class="press-label">UFC Media Day · São Paulo, Brazil</p>
+        <h3 class="press-title">Question at UFC São Paulo Media Day</h3>
+        <div class="press-body">
+          <p>Credentialed at UFC São Paulo media day for the Jailton Almeida vs. Derrick Lewis main event card, Schoonmaker asked a question on the official UFC media day video — timestamped directly to the moment.</p>
+          <p>Earlier that week, he sat down with main event fighter Jailton Almeida at the fighter hotel in São Paulo for a bilingual interview conducted in both English and Portuguese. He was also ringside at the event itself, taking in UFC São Paulo: Almeida vs. Lewis octagon-side.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTS SIDE BY SIDE -->
+<section id="scripts">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">04 — Written Work</span>
+      <h2 class="sec-title">Script → Screen</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="tabs reveal">
+      <button class="tab active" onclick="switchTab(this,'p-oliveira')">Oliveira vs. Poirier — Breakdown</button>
+      <button class="tab" onclick="switchTab(this,'p-canelo')">Canelo Alvarez — 5 Facts</button>
+    </div>
+
+    <!-- OLIVEIRA PANEL -->
+    <div id="p-oliveira" class="panel active">
+      <div class="script-scroll">
+        <div class="sh">Intro</div>
+        <div class="sp">
+          <p>What's up fight fanatics? UFC 269 was an explosive card with one of the most anticipated championship bouts of 2021. The main event did not disappoint, giving fans the war they wanted. In today's video, we're going to take a deep dive into the finer details of the contest, giving you an eye on the fight with a breakdown of Charles "Do Bronx" Oliveira vs. Dustin "The Diamond" Poirier.</p>
+        </div>
+        <div class="sh">The First Round: A Tale of Two Knockdowns</div>
+        <div class="sp">
+          <p>Going into this bout, the consensus was that Poirier would have the edge in the boxing exchanges, but Oliveira would find a way to get it done on the ground. Poirier is renowned for his boxing ability. In fact, according to legendary boxing trainer and fight commentator Teddy Atlas, no man in mixed martial arts has better boxing than Dustin Poirier.</p>
+          <p>However, there is no more prolific submission artist than Charles Oliveira. Many felt that this fight would be determined by where it was contested: if it stayed on the feet, Poirier would get to hear those vaunted words, "And new." If it went to the ground, the crowd would hear, "And Still."</p>
+          <p>Oliveira took a difficult route to winning the belt, overcoming adversity in his bout against Michael Chandler at UFC 262. He was badly hurt by an explosive right hand over the top from Chandler that knocked him down and nearly took him out of the fight. However, he found a way to survive, shucking on the ground and wrapping Chandler into his guard long enough to recover. Entering round two, the rest was history.</p>
+          <p>UFC 269 took a similar path. In the very first exchange, it looked like Poirier had Oliveira hurt. At the 4:47 mark, Poirier came over the top with a winging right that looked like it broke the guard and sent Oliveira to the Octagon canvas.</p>
+          <p>Looking more closely, though, we can see the punch hits the arms of Oliveira, not landing on the chin. Charlie Olives slipped on the back foot, making it look like a knockdown in real time. In slow-motion hindsight, the punch didn't land clean.</p>
+          <p>That doesn't mean Dustin's shots weren't finding their home. His left straight was landing over and over again, to great effect. Do Bronx doesn't have many holes in his game, but the most prominent deficiency is a lack of head movement.</p>
+          <p>Dustin was throwing each punch with bad intentions, putting maximum force behind each shot. Instead of slipping, Oliveira chose to negate the pressure by clinching, managing some good knees to the body and a few elbows upstairs.</p>
+          <p>In shades of his bout against Chandler, Charlie Olives ate a massive right hand at the 1:40 mark that sent him to the mat. He tried to land an upkick, but Poirier decided to fall into the guard to try and land ground and pound — ultimately a tactical error, as Dustin was probably better off allowing Oliveira to stand.</p>
+          <p>Oliveira eventually found his way back to his feet, prompting Poirier to wing out massive shots hunting for the knockout. Blows were landed, but Oliveira survived.</p>
+        </div>
+        <div class="sh">The Second Round: The Glove Grab Heard Round the World</div>
+        <div class="sp">
+          <p>At the close of the first, the momentum was tilted in Poirier's favor. He scored the knockdown and had Oliveira hurt from a few left straights, even if the first flashdown was actually just a slip.</p>
+          <p>Heading into the second, the sense was that if Oliveira wanted to turn the tide, he had to get his grappling going. That's where the controversy came into play.</p>
+          <p>When the second round commenced, Oliveira tried to work an early takedown, pushing Poirier back to the cage. When the double leg got stuffed, Charles switched to the clinch, landing an elbow at the 4:41 mark. Dustin defended using a whizzer, causing Oliveira to slip off and fall to the canvas.</p>
+          <p>At the 4:12 mark, Poirier made another massive tactical error — deciding to chase Oliveira into his guard rather than creating space and standing the fight up. This is the source of the controversy. Commentator Joe Rogan claimed that Oliveira hooked Poirier's glove in a way that prevented him from freeing his arm, prompting Dustin to roll in a way that led to Oliveira working elbows from the mount for the remainder of the round.</p>
+          <p>With a close eye on the fight: at the 4:11 mark, we can see Oliveira get wrist control as Dustin tries to slide out. At 4:08, it looks like there may have been fingers hooked in the glove, but you can see Oliveira almost instantly adjust to proper wrist control. The angle makes it nearly impossible to tell if there was illegal hooking, but if there was, it was incidental.</p>
+        </div>
+        <div class="sh">The Third Round: Backpack Oliveira</div>
+        <div class="sp">
+          <p>Regardless of the glove grab, the impact of those elbows took the wind out of Dustin Poirier's sails. When the third round started, it wasn't long before the beginning of the end.</p>
+          <p>Downloading data from the first round, Oliveira picked up that Poirier had a tendency to pull back to avoid right straights, exposing his hips. Oliveira has a beautiful double leg, but still hadn't been able to take Poirier down. When you're Charles Oliveira, though, you don't need to take it to the ground to get a submission.</p>
+          <p>Less than 15 seconds into round 3, Oliveira sets Dustin up by feinting on a right straight. Just as Charles expected, Dustin pulled back and tried to counter with a right hook. This allowed Oliveira to duck under and get in deep on a body lock. From there, it was only a matter of time.</p>
+          <p>All it takes is a tiny opening for Oliveira to enter python mode. Dustin briefly extended on all fours, allowing Oliveira to get his hooks in. For a moment it looked like he was too high and was going to slip off, but Do Bronx is a master of position. He sunk his hips back and turned himself into a backpack, working to secure the neck.</p>
+          <p>Poirier did his best to fight the hands, but there's only so much you can do in that position. Oliveira cranked to create space, and when the space was there, he snapped his arm under the chin quicker than the springs of a mousetrap. There was nothing left for The Diamond to do but tap.</p>
+          <p>Ultimately, it was questionable commentary from Joe Rogan that cast unwarranted doubt on Oliveira's victory. Not only did the standing submission come in the next round, Dustin Poirier himself stated in the post-fight presser that he did not feel fingers in his glove. The poor decision to go into Oliveira's guard and the worse decision to roll out of that omoplata is ultimately what led to the dominant round 2 for the champion.</p>
+          <p>What do you guys think? Was the glove grab significant or just another instance of bad commentary from Joe Rogan? Let us know in the comments! Thanks for watching!</p>
+        </div>
+      </div>
+      <div class="vid-sticky">
+        <div class="vid-wrap">
+          <iframe src="https://www.youtube.com/embed/TplIasBp6lI" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <p class="vid-caption">Produced video — script written by Timothy Schoonmaker</p>
+      </div>
+    </div>
+
+    <!-- CANELO PANEL -->
+    <div id="p-canelo" class="panel">
+      <div class="script-scroll">
+        <div class="sh">Intro</div>
+        <div class="sp">
+          <p>Being the best of the best takes an incredible amount of hard work and dedication. This is especially true if the mountain you're trying to climb is being the best active boxer on the planet. Of course, being the best comes with plenty of perks, too.</p>
+          <p>The man who has reached that peak is Canelo Alvarez, the Mexican multiweight champ who currently holds the unified supermiddleweight championship of the world. In today's video, we're going to share five incredible facts about Canelo Alvarez's otherworldly lifestyle. From his crazy strict workout routines to his extravagant wealth and drop-dead-gorgeous wife, you're not going to want to miss this!</p>
+        </div>
+        <div class="sh">Number Five: Super Strict Schedule</div>
+        <div class="sp">
+          <p>One of the first things any athlete trying to become the best must figure out is their schedule. For most people, it's incredibly easy to slip out of a routine, becoming enticed by the spontaneity of life. For Canelo Alvarez, maintaining a rigid schedule helps him stay one step ahead of his competition.</p>
+          <p>During his preparation for his rematch against Gennady "GGG" Golovkin in September 2018, Alvarez was training 6 times a week. On every day except Sunday, he would wake up at 6 AM to start running — a staple of every pro boxer's training routine. After his run, breakfast, then a power nap before the most intense sessions of the day.</p>
+          <p>From 2:30–5 PM on Mondays, Wednesdays, and Fridays, Alvarez hones his boxing skills: fierce jump rope intervals, shadow boxing, the speed bag, and the heavy bag. Tuesdays, Thursdays, and Saturdays? Hard sparring. Anyone who has ever trained combat sports understands sparring sessions can be grueling. This isn't a sport where you're tossing a ball around — fighters step into the ring with the intention of knocking each other out.</p>
+        </div>
+        <div class="sh">Number Four: Restrictive Diet &amp; Specialized Workouts</div>
+        <div class="sp">
+          <p>People unfamiliar with boxing may be surprised to learn that most boxers don't lift. For Canelo, he only sparingly touches weights. Like most boxers, he prefers to condition his strength through calisthenics. In an interview with Muscle &amp; Fitness, Alvarez stated: "If I lift any weights I do it more for explosion, but I really use my body weight to build up muscle and strength."</p>
+          <p>Canelo also adheres to an insanely strict diet when preparing for bouts. During training camps, his diet consists mostly of lean meats and low-carb vegetables. He only allows himself high-carb foods like tortillas once per week. Most of his protein intake comes from chicken and fish, complemented with leafy greens like spinach and kale. Once the fight's over, though, Canelo allows himself sushi and tacos. You can't put in all that work and never give yourself wiggle room!</p>
+        </div>
+        <div class="sh">Number Three: He Is RIDICULOUSLY Wealthy</div>
+        <div class="sp">
+          <p>No sane person would torture themselves the way a professional boxer does unless it came with a nice pot of gold at the end of that arduous rainbow. A quick look at Canelo Alvarez's bank account might help you understand why.</p>
+          <p>According to Celebrity Net Worth, the Alvarez estate is worth a cool $140 million. To put that in perspective, Anthony Joshua is worth around $60 million, and Tyson Fury around $57 million. For active boxing superstars, Alvarez stands above the rest on his mountain of money.</p>
+          <p>He had signed a contract worth $365 million with DAZN and Golden Boy Promotions in 2018 but ended up pulling out of that deal after the promotors paid him less per fight than originally agreed upon.</p>
+          <p>Beyond fight purses, Canelo's wealth includes sponsorships with Everlast, Tecate, Hennessey, Roger Dubuis luxury watches, and Louis Vuitton. On one shopping spree alone, he spent nearly $20,000 — a $15,000 Supreme x Louis Vuitton hoodie, four pairs of Nike Air Max 90s, and a pair of Adidas EQT. He also has an affinity for Kobe Bryant's Nike line, and runs in Sauconys.</p>
+        </div>
+        <div class="sh">Number Two: He Collects Supercars</div>
+        <div class="sp">
+          <p>When you're living life in the fast lane, you're going to need a car with a lot of giddyup. Or, in Canelo's case, several cars with excessive giddyup.</p>
+          <p>In 2019, he purchased a Bugatti Chiron for just over $3 million — the fastest street-legal car on the planet, one of only 500 in existence. His Bugatti shares a multi-story garage with a Lamborghini Aventador, Mercedes-Benz G63, Mercedes SLS AMG Black Series, Ferrari Testarossa, Rolls Royce Ghost, Ferrari 458 Italia, McLaren P1, Porsche 911 GT3, and a Renazzo Vorsteiner Lamborghini Gallardo. Total collection value: nearly $15 million.</p>
+        </div>
+        <div class="sh">Bonus: He Married a Goddess</div>
+        <div class="sp">
+          <p>Unfortunately for all the bachelorettes watching this video, Canelo Alvarez settled down, tying the knot with Chilean supermodel Fernanda Gomez after his TKO performance against Billy Joe Saunders. The couple exchanged vows at the Guadalajara Cathedral on May 15, 2021.</p>
+          <p>The 25-year-old Gomez is a highly successful social media influencer and businesswoman with over a million Instagram followers, and she owns and operates the "Nailbar &amp; Boutique" luxury lounge in Guadalajara. The power couple live in a multi-million-dollar mansion that would give Bruce Wayne a run for his money.</p>
+          <p>What do you guys think of Canelo Alvarez's fantastic lifestyle? Let us know in the comments! If you enjoyed this video be sure to hit like and subscribe for future combat sports content. Thanks for watching!</p>
+        </div>
+      </div>
+      <div class="vid-sticky">
+        <div class="vid-wrap">
+          <iframe src="https://www.youtube.com/embed/XZW85aSb7jc" frameborder="0" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+        <p class="vid-caption">Produced video — script written by Timothy Schoonmaker</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLOCKED N' LOADED -->
+<section id="clocked">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">05 — Clocked N' Loaded</span>
+      <h2 class="sec-title">Best Of</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="clocked-intro reveal">As sole Editor-in-Chief and Content Strategist at Clocked N' Loaded (March 2024–March 2025), Schoonmaker grew the YouTube channel from zero to 23K+ subscribers and Instagram to 32K+ organic followers in under twelve months. Below is a curated selection of the highest-performing content from that run.</p>
+
+    <div class="sub-label reveal">YouTube — Top Videos</div>
+    <div class="yt-grid reveal">
+      <div class="yt-card" data-id="GBbhTjS1hDU" onclick="loadYT(this)">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/GBbhTjS1hDU/maxresdefault.jpg" alt="Clocked N Loaded Top Video 1" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="yt-card" data-id="7YRx7eGXbRk" onclick="loadYT(this)">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/7YRx7eGXbRk/maxresdefault.jpg" alt="Clocked N Loaded Top Video 2" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="yt-card" data-id="4oQjtjqXvZQ" onclick="loadYT(this)">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/4oQjtjqXvZQ/maxresdefault.jpg" alt="Clocked N Loaded Top Video 3" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="yt-card" data-id="aVDnwFyBkvk" onclick="loadYT(this)">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/aVDnwFyBkvk/maxresdefault.jpg" alt="Clocked N Loaded Top Video 4" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+      <div class="yt-card" data-id="TAZfV3j9px4" onclick="loadYT(this)">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/TAZfV3j9px4/maxresdefault.jpg" alt="Clocked N Loaded Top Video 5" loading="lazy">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-label reveal">Instagram — Viral Posts</div>
+    <div class="ig-scroll-btns reveal">
+      <button class="ig-btn" onclick="scrollIG(-1)" aria-label="Scroll left">&#8249;</button>
+      <button class="ig-btn" onclick="scrollIG(1)" aria-label="Scroll right">&#8250;</button>
+    </div>
+    <div class="ig-carousel reveal" id="igCarousel">
+
+      <div class="ig-item jewel">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DCHKos_RTkv/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHhMSbmRjSF/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DHBy9-TR_cX/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFvp6xDpxw6/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEqFRdgxYWs/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DEGHoBGRran/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DBy5AGzRJgK/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DAZHEutx4Os/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C8dDdi0R5ep/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+      <div class="ig-item">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C75El0jxnTX/" data-instgrm-version="14" style="background:#191919;border:0;border-radius:0;max-width:100%;min-width:0;padding:0;width:100%"></blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BY THE NUMBERS -->
+<section id="stats">
+  <div class="inner">
+    <div class="sec-head reveal">
+      <span class="sec-label">06 — Impact</span>
+      <h2 class="sec-title">By the Numbers</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="5">0</span><em>M+</em></div>
+        <div class="stat-lbl">Total YouTube Views</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="46">0</span><em>K+</em></div>
+        <div class="stat-lbl">TikTok Followers Grown</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="23">0</span><em>K+</em></div>
+        <div class="stat-lbl">YouTube Subs in 12 Months</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="32">0</span><em>K+</em></div>
+        <div class="stat-lbl">Instagram Followers Grown</div>
+      </div>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="14">0</span><em>+</em></div>
+        <div class="stat-lbl">Fighter Interviews Conducted</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><span class="counter" data-target="5">0</span><em>+</em></div>
+        <div class="stat-lbl">Years Combat Sports Coverage</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><em>2</em></div>
+        <div class="stat-lbl">Languages — English &amp; Portuguese</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num"><em>100%</em></div>
+        <div class="stat-lbl">Remote &amp; Live Event Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner" style="text-align:center">
+    <p class="contact-eyebrow">07 — Get In Touch</p>
+    <h2 class="contact-title">Let's<br>Work.</h2>
+    <p class="contact-sub">Available for multimedia producer roles, freelance event coverage, and fight week production. Credentialed. Bilingual. Ready to travel.</p>
+    <a class="contact-email" href="mailto:timothyjameswriter@gmail.com">timothyjameswriter@gmail.com</a>
+    <span class="contact-phone">(917) 913-6514</span>
+    <p class="footer">Timothy James Schoonmaker &nbsp;·&nbsp; Combat Sports Multimedia Producer &nbsp;·&nbsp; Bronx, New York</p>
+  </div>
+</section>
+
+<script async src="https://www.instagram.com/embed.js"></script>
+<script>
+function loadFeatured(card) {
+  if (card.classList.contains('loaded')) return;
+  var thumb = card.querySelector('.vthumb');
+  var id = card.dataset.id;
+  var start = card.dataset.start ? '&start=' + card.dataset.start : '';
+  thumb.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1' + start + '" frameborder="0" allowfullscreen allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+  card.classList.add('loaded');
+}
+
+function loadYT(card) {
+  if (card.classList.contains('loaded')) return;
+  var thumb = card.querySelector('.yt-thumb');
+  var id = card.dataset.id;
+  thumb.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" frameborder="0" allowfullscreen allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+  card.classList.add('loaded');
+}
+
+function switchTab(btn, panelId) {
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+function scrollIG(dir) {
+  var c = document.getElementById('igCarousel');
+  c.scrollBy({ left: dir * 370, behavior: 'smooth' });
+}
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(function(el) {
+    var target = parseInt(el.dataset.target);
+    var duration = 1400;
+    var step = target / (duration / 16);
+    var current = 0;
+    var timer = setInterval(function() {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current);
+    }, 16);
+  });
+}
+
+// Scroll reveal
+var revealed = new Set();
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !revealed.has(entry.target)) {
+      revealed.add(entry.target);
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// Counter trigger
+var statsObserver = new IntersectionObserver(function(entries) {
+  if (entries[0].isIntersecting) {
+    animateCounters();
+    statsObserver.disconnect();
+  }
+}, { threshold: 0.25 });
+var statsEl = document.getElementById('stats');
+if (statsEl) statsObserver.observe(statsEl);
+</script>
+</body>
+</html>
